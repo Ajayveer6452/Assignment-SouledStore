@@ -15,6 +15,7 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
+        // Hide splash screen
         setTimeout(() => {
             SplashScreen.hide();
         }, 1000);

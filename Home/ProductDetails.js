@@ -20,17 +20,19 @@ export default class ProductDetails extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
             ProductDataArray: [],
-            title: ""
         };
 
     }
 
     componentWillMount() {
 
+        // Fetch and set navbar title
         this.props.navigation.setParams({ title: this.props.categoryName })
      
+        // Fetch and set product data as per category
         if (this.props.categoryName === "Shirts") {
             this.setState({ ProductDataArray: HomeModel.ProductShirtsData })
         }
