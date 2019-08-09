@@ -11,9 +11,7 @@ export default class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
+    
     }
 
     componentDidMount() {
@@ -21,45 +19,32 @@ export default class Home extends Component {
             SplashScreen.hide();
         }, 1000);
       
-    
     }
-
 
     render() {
 
-
         return (
-
             <View style={styles.container} >
-
-                <View style={{ flex: 0.7, flexDirection: 'row' }}>
-
-                    <View style={{ flex: 0.5, padding: 5 }}>
-
+                <View style={styles.innerContainer}>
+                    
+                    <View style={styles.innerChild}>
                         <TouchableOpacity
                             style={[styles.cardStyle, { backgroundColor: '#DF4C85', }]}
                             activeOpacity={.5} onPress={() => { Actions.ProductDetails({ categoryName: "Shirts" }) }} >
                             <Text style={styles.textStyle}>Shirts</Text>
-
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             style={[styles.cardStyle, { backgroundColor: '#00B481', }]}
                             activeOpacity={.5} onPress={() => {
-
-                                Actions.ProductDetails({ categoryName: "TShirts" })
-
+                                Actions.ProductDetails({ categoryName: "T-Shirts" })
                             }} >
 
                             <Text style={styles.textStyle}>T-Shirts</Text>
                         </TouchableOpacity>
-
-
                     </View>
 
-
-                    <View style={{ flex: 0.5, padding: 5 }}>
-
+                    <View style={styles.innerChild}>
                         <TouchableOpacity
                             style={[styles.cardStyle, { backgroundColor: '#2C98CC', }]}
                             activeOpacity={.5} onPress={() => { Actions.ProductDetails({ categoryName: "Jeans" }) }} >
@@ -69,17 +54,11 @@ export default class Home extends Component {
                         <TouchableOpacity
                             style={[styles.cardStyle, { backgroundColor: '#FF7356', }]}
                             activeOpacity={.5} onPress={() => {
-
                                 Actions.ProductDetails({ categoryName: "Kurtas" })
-
                             }} >
                             <Text style={styles.textStyle}>Kurtas</Text>
-
                         </TouchableOpacity>
-
                     </View>
-
-
 
                 </View>
 
@@ -96,6 +75,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
+    innerContainer:{
+         flex: 0.7, 
+         flexDirection: 'row' 
+    },
+
+    innerChild:{ flex: 0.5, padding: 5 },
 
     cardStyle: {
         flex: 0.5, shadowColor: '#000',

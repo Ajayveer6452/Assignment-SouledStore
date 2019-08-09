@@ -35,8 +35,8 @@ class TabIcon extends Component {
                 break;
         }
         return (
-            <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', alignSelf: 'center', justifyContent: 'center' }}>
-                <Image source={icon} style={{ width: 28, height: 28 }} />
+            <View style={styles.tabBarStyleCSS}>
+                <Image source={icon} style={styles.tabBarStyleImage} />
             </View>
         );
     }
@@ -55,7 +55,7 @@ export default class BottomBar extends Component {
                 <Router>
                     <Scene key="root">
 
-                        {/* Here we created tabbar - Ajay Veer*/}
+                        {/* Here we have created tabbar - Ajay Veer*/}
                         <Scene key="tabbar" hideNavBar={true} mode='modal' animationEnabled={true} swipeEnabled={false} tabBarPosition="bottom" type="reset" duration={1}  >
                             <Scene key="main" hideNavBar={true} tabs={true} tabBarStyle={styles.tabBar} lazy default="Home">
 
@@ -124,7 +124,11 @@ const styles = StyleSheet.create({
         flex: 1, 
         alignSelf: 'center', 
         color: 'white'
-    }
+    },
+
+    tabBarStyleCSS:{ flex: 1, flexDirection: 'column', alignItems: 'center', alignSelf: 'center', justifyContent: 'center' },
+
+    tabBarStyleImage :{ width: 28, height: 28 }
 
 });
 

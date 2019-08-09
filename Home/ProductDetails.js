@@ -7,12 +7,16 @@ import {
 } from 'react-native';
 import * as HomeModel from './HomeModel'
 
-
-
 export default class ProductDetails extends Component {
 
-    static navigationOptions = { headerLeft: null }
-
+    static navigationOptions = ({ navigation }) => {
+        const { state } = navigation
+        return {
+             title: state.params.title,
+             headerLeft: null
+        
+        };
+    };
 
     constructor(props) {
         super(props);
@@ -21,18 +25,16 @@ export default class ProductDetails extends Component {
             title: ""
         };
 
-        console.log(this.props.categoryName)
-        
-     
-
     }
 
     componentWillMount() {
+
+        this.props.navigation.setParams({ title: this.props.categoryName })
      
         if (this.props.categoryName === "Shirts") {
             this.setState({ ProductDataArray: HomeModel.ProductShirtsData })
         }
-        else if (this.props.categoryName === "TShirts") {
+        else if (this.props.categoryName === "T-Shirts") {
             this.setState({ ProductDataArray: HomeModel.ProductTShirtsData })
         }
         else if (this.props.categoryName === "Jeans") {
@@ -49,18 +51,10 @@ export default class ProductDetails extends Component {
 
     render() {
 
-
         return (
-
             <View style={styles.container} >
-
                 <FlatList
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        padding: 5
-
-                    }}
+                    style={styles.flatlistStyle}
                     data={this.state.ProductDataArray}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item, index }) => {
@@ -74,15 +68,14 @@ export default class ProductDetails extends Component {
 
                                     <Image source={item.Image} style={styles.profileImg} />
                                     <View style={{ flex: 1, flexDirection: 'row', }}>
-                                        <Text style={{ color: '#4E4E4E', fontWeight: 'bold', fontSize: 16 }}>{item.Description} </Text>
+                                        <Text style={styles.textDescription}>{item.Description} </Text>
                                     </View>
 
                                     <View style={{ flex: 1, flexDirection: 'row', }}>
-                                        <Text numberOfLines={0} style={{ color: '#4E4E4E', fontWeight: 'bold', fontSize: 16 }}>{item.Price} </Text>
+                                        <Text numberOfLines={0} style={styles.textDescription}>{item.Price} </Text>
                                     </View>
 
                                 </View>
-
                             </TouchableOpacity>
 
                         );
@@ -99,8 +92,14 @@ export default class ProductDetails extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // padding: 10
     },
+
+    flatlistStyle:{
+        width: '100%',
+        height: '100%',
+        padding: 5
+    },
+
     listCard: {
         flex: 1,
         backgroundColor: 'white',
@@ -122,5 +121,8 @@ const styles = StyleSheet.create({
         borderRadius: 40,
         alignSelf: 'center'
     },
-
+    textDescription:{ 
+        color: '#4E4E4E', 
+        fontWeight: 'bold', 
+        fontSize: 16 },
 })
