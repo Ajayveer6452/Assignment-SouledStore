@@ -18,6 +18,7 @@ import Profile from '../Assignment/Profile/Profile'
 // Help Route
 import Help from '../Assignment/Help/Help'
 
+
 //Create a child class that will manage the tabBar icon 
 class TabIcon extends Component {
     render() {
