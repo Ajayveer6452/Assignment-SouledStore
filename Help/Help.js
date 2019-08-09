@@ -18,10 +18,8 @@ export default class Help extends Component {
 
     }
 
-
     render() {
 
-      
         return (
 
             <View style={styles.container} >

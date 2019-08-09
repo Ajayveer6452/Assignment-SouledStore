@@ -10,14 +10,13 @@ import { Router, Scene } from 'react-native-router-flux';
 
 // Home Route
 import Home from '../Assignment/Home/Home'
-
+import ProductDetails from './Home/ProductDetails'
 
 //Profile Route
 import Profile from '../Assignment/Profile/Profile'
  
 // Help Route
 import Help from '../Assignment/Help/Help'
-
 
 //Create a child class that will manage the tabBar icon 
 class TabIcon extends Component {
@@ -45,7 +44,6 @@ class TabIcon extends Component {
 
 //MyApp Main Class 
 export default class BottomBar extends Component {
-
     constructor(props) {
         super(props);
     }
@@ -66,7 +64,7 @@ export default class BottomBar extends Component {
                                     icon={TabIcon}
                                     title="Home"
                                     headerTitleStyle={styles.headerTitleTabBarStyle}
-                                    headerStyle={{ backgroundColor: 'rgb(0, 61, 165)' }}
+                                    headerStyle={{ backgroundColor: '#00A6D6' }}
                                     component={Home}
                                     initial={true}
                                 />
@@ -75,7 +73,7 @@ export default class BottomBar extends Component {
                                     iconName="profile"
                                     title="Profile"
                                     headerTitleStyle={styles.headerTitleTabBarStyle}
-                                    headerStyle={{ backgroundColor: 'rgb(0, 61, 165)' }}
+                                    headerStyle={{ backgroundColor: '#00A6D6' }}
                                     icon={TabIcon}
                                     hideNavBar={false}
                                     component={Profile} />
@@ -83,13 +81,24 @@ export default class BottomBar extends Component {
                                 <Scene key="Help"
                                     title="Help"
                                     headerTitleStyle={styles.headerTitleTabBarStyle}
-                                    headerStyle={{ backgroundColor: 'rgb(0, 61, 165)' }}
+                                    headerStyle={{ backgroundColor: '#00A6D6' }}
                                     iconName="help"
                                     icon={TabIcon}
                                     hideNavBar={false}
                                     component={Help} />
 
                             </Scene>
+
+                            <Scene
+                            key="ProductDetails"
+                            headerTitleStyle={styles.headerTitleTabBarStyle}
+                            headerStyle={{ backgroundColor: '#00A6D6' }}
+                            headerTintColor="white"
+                            component={ProductDetails}
+                            hideNavBar={false}
+                            title="Product"
+                        />
+
 
                         </Scene>
 
@@ -113,7 +122,6 @@ const styles = StyleSheet.create({
     },
     headerTitleTabBarStyle:{
         flex: 1, 
-        textAlign: 'center', 
         alignSelf: 'center', 
         color: 'white'
     }
